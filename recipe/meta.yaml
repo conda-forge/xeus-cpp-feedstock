@@ -14,7 +14,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 0
+  number: 1
   skip: true  # [win]
   run_exports:
     - {{ pin_subpackage(name, max_pin='x.x') }}
@@ -43,6 +43,7 @@ requirements:
     - {{ pin_compatible('cppzmq', max_pin='x.x') }}
     - {{ pin_compatible('xtl', max_pin='x.x') }}
     - {{ pin_compatible('nlohmann_json', max_pin='x.x') }}
+    - {{ pin_compatible("clang-" ~ clang_version[0], exact=True) }}
 
 test:
   requires:
