@@ -7,7 +7,7 @@ channel_targets:
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
-- '15'
+- '16'
 macos_machine:
 - x86_64-apple-darwin13.4.0
 pugixml:
@@ -15,6 +15,6 @@ pugixml:
 target_platform:
 - osx-64
 zeromq:
-- 4.3.4
+- 4.3.5
 zlib:
 - '1.2'
