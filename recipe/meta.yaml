@@ -1,6 +1,6 @@
 {% set name = "xeus-cpp" %}
-{% set version = "0.0.1" %}
-{% set sha256 = "85813e4c6a5987372fda2532e8b6b388c1ebb5694c6b3a4c8dda9fd6b159a205" %}
+{% set version = "0.1.0" %}
+{% set sha256 = "66a2f3d246a3dd7d3ca6417201e72acb559ac9da96f0d501bdab95eb97d3492a" %}
 
 {% set clang_version = [16, 0, 0] %}
 
@@ -14,7 +14,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 3
+  number: 0
   skip: true  # [win]
   run_exports:
     - {{ pin_subpackage(name, max_pin='x.x') }}
