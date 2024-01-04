@@ -1,6 +1,6 @@
 {% set name = "xeus-cpp" %}
-{% set version = "0.1.0" %}
-{% set sha256 = "66a2f3d246a3dd7d3ca6417201e72acb559ac9da96f0d501bdab95eb97d3492a" %}
+{% set version = "0.2.0" %}
+{% set sha256 = "71f25416386167f4c67811e0699e4d2607c18da2c4e3f355e4b368bdb9490130" %}
 
 {% set clang_version = [16, 0, 0] %}
 
