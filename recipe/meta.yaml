@@ -31,7 +31,7 @@ requirements:
     - xtl >=0.7.7,<0.8
     - pugixml
     - cpp-argparse >=2.9,<3.1
-    - nlohmann_json >=3.9.1,<4
+    - nlohmann_json ==3.11.2
     - dirent >=1.21,<2.0  # [win]
     - zlib
     - libllvm{{ clang_version[0] }}
@@ -41,7 +41,7 @@ requirements:
     # they are used at runtime by the c++ interpreter.
     - {{ pin_compatible('cppzmq', max_pin='x.x') }}
     - {{ pin_compatible('xtl', max_pin='x.x') }}
-    - {{ pin_compatible('nlohmann_json', max_pin='x.x') }}
+    - {{ pin_compatible('nlohmann_json', max_pin='x.x.x') }}
     - {{ pin_compatible("clang-" ~ clang_version[0], exact=True) }}
 
 test:
