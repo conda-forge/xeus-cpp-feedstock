@@ -13,7 +13,7 @@ source:
   sha256: 7d949fc9480970d21b2c064b297d6a6249cd6842437deed05fe17ae2eb3bc175
 
 build:
-  number: 0
+  number: 1
   skip: true  # [win]
   run_exports:
     - {{ pin_subpackage(name, max_pin='x.x') }}
@@ -30,8 +30,8 @@ requirements:
     - xeus >=3.0.0,<4
     - xtl >=0.7.7,<0.8
     - pugixml
-    - cpp-argparse >=2.9,<3
-    - nlohmann_json >=3.9.1,<4
+    - cpp-argparse >=2.9,<3.1
+    - nlohmann_json ==3.11.2
     - dirent >=1.21,<2.0  # [win]
     - zlib
     - libllvm{{ clang_version[0] }}
@@ -41,7 +41,7 @@ requirements:
     # they are used at runtime by the c++ interpreter.
     - {{ pin_compatible('cppzmq', max_pin='x.x') }}
     - {{ pin_compatible('xtl', max_pin='x.x') }}
-    - {{ pin_compatible('nlohmann_json', max_pin='x.x') }}
+    - {{ pin_compatible('nlohmann_json', max_pin='x.x.x') }}
     - {{ pin_compatible("clang-" ~ clang_version[0], exact=True) }}
 
 test:
