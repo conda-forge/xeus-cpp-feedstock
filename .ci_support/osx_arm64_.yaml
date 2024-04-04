@@ -20,8 +20,5 @@ target_platform:
 - osx-arm64
 zeromq:
 - 4.3.5
-zip_keys:
-- - c_stdlib_version
-  - MACOSX_DEPLOYMENT_TARGET
 zlib:
 - '1.2'
