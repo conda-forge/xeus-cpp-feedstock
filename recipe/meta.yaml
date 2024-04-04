@@ -1,5 +1,5 @@
 {% set name = "xeus-cpp" %}
-{% set version = "0.3.0" %}
+{% set version = "0.4.0" %}
 
 {% set clang_version = [16, 0, 0] %}
 
@@ -10,10 +10,10 @@ package:
 source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://github.com/compiler-research/xeus-cpp/archive/{{ version }}.tar.gz
-  sha256: 7d949fc9480970d21b2c064b297d6a6249cd6842437deed05fe17ae2eb3bc175
+  sha256: 28b07534ff322ebe17fab1997cdf60d0fb811ee1d7fd518742a5d0d157e70e25
 
 build:
-  number: 2
+  number: 0
   skip: true  # [win]
   run_exports:
     - {{ pin_subpackage(name, max_pin='x.x') }}
