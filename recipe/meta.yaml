@@ -63,5 +63,6 @@ about:
 
 extra:
   recipe-maintainers:
+    - vgvassilev
     - SylvainCorlay
     - JohanMabille
