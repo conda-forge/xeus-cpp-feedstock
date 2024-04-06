@@ -9,9 +9,9 @@ Package license: BSD-3-Clause
 
 Summary: Jupyter kernel for the C++ programming language
 
-Development: https://github.com/compiler-research/xeus-cling
+Development: https://github.com/compiler-research/xeus-cpp
 
-Documentation: https://github.com/compiler-research/xeus-cling
+Documentation: https://github.com/compiler-research/xeus-cpp
 
 Jupyter kernel for the C++ programming languague, based on clang
 
@@ -198,4 +198,6 @@ Feedstock Maintainers
 
 * [@JohanMabille](https://github.com/JohanMabille/)
 * [@SylvainCorlay](https://github.com/SylvainCorlay/)
+* [@alexander-penev](https://github.com/alexander-penev/)
+* [@vgvassilev](https://github.com/vgvassilev/)
 
