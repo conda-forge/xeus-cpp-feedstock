@@ -27,19 +27,16 @@ requirements:
     - zeromq
     - cppzmq >=4.6.0,<5
     - xeus-zmq >=1.0.1,<2.0
-    - xeus >=3.0.0,<4
-    - xtl >=0.7.7,<0.8
+    - xeus >=5
     - pugixml
     - cpp-argparse >=2.9,<3.1
     - nlohmann_json ==3.11.2
-    - dirent >=1.21,<2.0  # [win]
     - zlib
     - cppinterop
   run:
-    # Even though cppzmq, xtl and nlohmann_json are header-only,
+    # Even though cppzmq and nlohmann_json are header-only,
     # they are used at runtime by the c++ interpreter.
     - {{ pin_compatible('cppzmq', max_pin='x.x') }}
-    - {{ pin_compatible('xtl', max_pin='x.x') }}
     - {{ pin_compatible('nlohmann_json', max_pin='x.x.x') }}
     - cppinterop
 
