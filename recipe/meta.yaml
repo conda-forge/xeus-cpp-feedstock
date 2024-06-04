@@ -26,11 +26,11 @@ requirements:
   host:
     - zeromq
     - cppzmq >=4.6.0,<5
-    - xeus-zmq >=1.0.1,<2.0
+    - xeus-zmq >=3.0,<4.0
     - xeus >=5
     - pugixml
     - cpp-argparse >=2.9,<3.1
-    - nlohmann_json ==3.11.2
+    - nlohmann_json ==3.11.3
     - zlib
     - cppinterop
   run:
