@@ -11,7 +11,7 @@ source:
   sha256: 352400083227e3ef8f747ddaffe37ca19af6cd760254cb033114ea6027929aec
 
 build:
-  number: 0
+  number: 1
   run_exports:
     - {{ pin_subpackage(name, max_pin='x.x') }}
   ignore_run_exports:
@@ -24,7 +24,6 @@ requirements:
     - cmake
     - make  # [unix]
   host:
-    - zeromq
     - cppzmq >=4.6.0,<5
     - xeus-zmq >=3.0,<4.0
     - xeus >=5
@@ -38,7 +37,6 @@ requirements:
     # they are used at runtime by the c++ interpreter.
     - {{ pin_compatible('cppzmq', max_pin='x.x') }}
     - {{ pin_compatible('nlohmann_json', max_pin='x.x.x') }}
-    - cppinterop
 
 test:
   requires:

@@ -10,7 +10,5 @@ pugixml:
 - '1.14'
 target_platform:
 - win-64
-zeromq:
-- 4.3.5
 zlib:
-- '1.2'
+- '1'
