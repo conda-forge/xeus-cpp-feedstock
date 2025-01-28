@@ -29,8 +29,8 @@ requirements:
     - pugixml
     - cpp-argparse >=2.9,<3.1
     - nlohmann_json ==3.11.3
-    - zlib
     - cppinterop
+    - curl
   run:
     # Even though nlohmann_json is header-only,
     # it is used at runtime by the c++ interpreter.
