@@ -30,11 +30,12 @@ requirements:
     - cpp-argparse >=2.9,<3.1
     - nlohmann_json ==3.11.3
     - cppinterop
-    - curl
+    - libcurl
   run:
     # Even though nlohmann_json is header-only,
     # it is used at runtime by the c++ interpreter.
     - {{ pin_compatible('nlohmann_json', max_pin='x.x.x') }}
+    - libcurl
 
 test:
   requires:
