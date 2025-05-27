@@ -28,7 +28,7 @@ requirements:
     - xeus >=5
     - pugixml
     - cpp-argparse
-    - nlohmann_json ==3.11.3
+    - nlohmann_json ==3.12.0
     - cppinterop
     - libcurl
   run:
