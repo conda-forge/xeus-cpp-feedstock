@@ -1,5 +1,5 @@
 {% set name = "xeus-cpp" %}
-{% set version = "0.7.1" %}
+{% set version = "0.7.2" %}
 
 package:
   name: {{ name|lower }}
@@ -8,7 +8,7 @@ package:
 source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://github.com/compiler-research/xeus-cpp/archive/{{ version }}.tar.gz
-  sha256: d6585f711fe1f8697a11f4da5511a51981ca46df13b72761663298fcb5f126e7
+  sha256: 679f4065490f49d7d5aee4639a0f44e1e70412421f5ad0a029ee21f76fb3e33e
 
 build:
   number: 0
