@@ -13,7 +13,7 @@ channel_targets:
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
-- '18'
+- '19'
 libcurl:
 - '8'
 macos_machine:
@@ -22,5 +22,3 @@ pugixml:
 - '1.15'
 target_platform:
 - osx-arm64
-zlib:
-- '1'
