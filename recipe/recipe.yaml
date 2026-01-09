@@ -48,14 +48,15 @@ tests:
       files:
         exists:
           - ${{ "Library/" if win }}bin/xcpp${{ ".exe" if win }}
-          - share/jupyter/kernels/xcpp17/kernel.json
-          - share/jupyter/kernels/xcpp20/kernel.json
-          - share/jupyter/kernels/xcpp23/kernel.json
-          - share/jupyter/kernels/xc11/kernel.json
-          - share/jupyter/kernels/xc17/kernel.json
-          - share/jupyter/kernels/xc23/kernel.json
+          - ${{ "Library/" if win }}share/jupyter/kernels/xcpp17/kernel.json
+          - ${{ "Library/" if win }}share/jupyter/kernels/xcpp20/kernel.json
+          - ${{ "Library/" if win }}share/jupyter/kernels/xcpp23/kernel.json
+          - ${{ "Library/" if win }}share/jupyter/kernels/xc11/kernel.json
+          - ${{ "Library/" if win }}share/jupyter/kernels/xc17/kernel.json
+          - ${{ "Library/" if win }}share/jupyter/kernels/xc23/kernel.json
   - script:
-      - test "$(jq -r '.env.PATH' share/jupyter/kernels/xc23/kernel.json)" == '${PATH}'
+    - if unix:
+      then: test "$(jq -r '.env.PATH' share/jupyter/kernels/xc23/kernel.json)" == '${PATH}'
     requirements:
       run:
         - jq
