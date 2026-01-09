@@ -1,0 +1,29 @@
+From 59ccfc7c353636142181de2ae01dea9dcc36c12f Mon Sep 17 00:00:00 2001
+From: AntoinePrv <AntoinePrv@users.noreply.github.com>
+Date: Fri, 9 Jan 2026 17:27:21 +0100
+Subject: [PATCH] Set kernel configuration as cache variables
+
+---
+ CMakeLists.txt | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 9e1648f..f369b6a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -124,9 +124,9 @@ function(configure_kernel kernel)
+   if(EMSCRIPTEN)
+     set(prefix "wasm_")
+   else()
+-    set(XEUS_CPP_PATH "$ENV{PATH}")
+-    set(XEUS_CPP_LD_LIBRARY_PATH "$ENV{LD_LIBRARY_PATH}")
+-    set(XEUS_CPP_INCLUDE_DIR ${CMAKE_INSTALL_PREFIX}/include)
++    set(XEUS_CPP_PATH "$ENV{PATH}" CACHE STRING "Path environment variable")
++    set(XEUS_CPP_LD_LIBRARY_PATH "$ENV{LD_LIBRARY_PATH}" CACHE STRING "LD_LIBRARY_PATH environment variable")
++    set(XEUS_CPP_INCLUDE_DIR ${CMAKE_INSTALL_PREFIX}/include CACHE STRING "Include directory")
+   endif()
+   if (WIN32)
+     string(REPLACE "\\" "/" kernel "${kernel}")
+-- 
+2.52.0
+

@@ -4,11 +4,11 @@ if [[ "$(uname)" == "Darwin" ]]; then
     CXXFLAGS="${CXXFLAGS} -D_LIBCPP_DISABLE_AVAILABILITY"
 fi
 
-cmake -DCMAKE_BUILD_TYPE=Release     \
-      -DCMAKE_INSTALL_PREFIX=$PREFIX \
-      -DCMAKE_PREFIX_PATH=$PREFIX    \
-      -DCMAKE_INSTALL_LIBDIR=lib     \
-      -DXEUS_CPP_BUILD_TESTS=OFF     \
-      $SRC_DIR
+cmake -B build/ -S "${SRC_DIR}" ${CMAKE_ARGS} \
+    -D XEUS_CPP_BUILD_TESTS=OFF \
+    -D XEUS_CPP_LD_LIBRARY_PATH='${LD_LIBRARY_PATH}':"${PREFIX}/lib" \
+    -D XEUS_CPP_PATH='${PATH}'
 
-make install
+cmake --build build/ --parallel "${CPU_COUNT}"
+
+cmake --install build/
