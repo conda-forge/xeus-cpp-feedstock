@@ -1,6 +1,6 @@
 context:
   version: "0.8.0"
-  build_number: 0
+  build_number: 1
 
 package:
   name: xeus-cpp
@@ -9,6 +9,8 @@ package:
 source:
   url: https://github.com/compiler-research/xeus-cpp/archive/${{ version }}.tar.gz
   sha256: 3d3b437799e98dc1d23add165a1c1dff77b1251e19646c18fb5f3ad2bd0c47f5
+  patches:
+    - 0001-Set-kernel-configuration-as-cache-variables.patch
 
 build:
   number: ${{ build_number }}
@@ -46,6 +48,19 @@ tests:
       files:
         exists:
           - ${{ "Library/" if win }}bin/xcpp${{ ".exe" if win }}
+          - ${{ "Library/" if win }}share/jupyter/kernels/xcpp17/kernel.json
+          - ${{ "Library/" if win }}share/jupyter/kernels/xcpp20/kernel.json
+          - ${{ "Library/" if win }}share/jupyter/kernels/xcpp23/kernel.json
+          - ${{ "Library/" if win }}share/jupyter/kernels/xc11/kernel.json
+          - ${{ "Library/" if win }}share/jupyter/kernels/xc17/kernel.json
+          - ${{ "Library/" if win }}share/jupyter/kernels/xc23/kernel.json
+  - if: unix
+    then:
+      script:
+        - test "$(jq -r '.env.PATH' share/jupyter/kernels/xc23/kernel.json)" == '${PATH}'
+      requirements:
+        run:
+          - jq
 
 about:
   homepage: https://github.com/compiler-research/xeus-cpp
