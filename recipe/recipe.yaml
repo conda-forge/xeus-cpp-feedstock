@@ -1,5 +1,5 @@
 context:
-  version: "0.8.1"
+  version: "0.9.0"
   build_number: 0
 
 package:
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://github.com/compiler-research/xeus-cpp/archive/${{ version }}.tar.gz
-  sha256: 17587df9a0a97612677c8a29410d80aa668aa8257c64a86232cbf0ea7572fcd1
+  sha256: 193e1824803b594ef19464561679de4e298f496028fb00c1149012058903d03d
   patches:
     - 0001-Set-kernel-configuration-as-cache-variables.patch
 
@@ -29,8 +29,8 @@ requirements:
       then:
         - make
   host:
-    - xeus-zmq >=3.0,<4.0
-    - xeus >=5
+    - xeus-zmq >=4.0,<5.0
+    - xeus >=6,<7
     - pugixml
     - cpp-argparse
     - nlohmann_json
