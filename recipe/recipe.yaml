@@ -9,8 +9,6 @@ package:
 source:
   url: https://github.com/compiler-research/xeus-cpp/archive/${{ version }}.tar.gz
   sha256: f84ae9fab0016b8995f60cc52ba68d287b224dfcf8b8c21a34b5200522799446
-  patches:
-    - 0001-Set-kernel-configuration-as-cache-variables.patch
 
 build:
   number: ${{ build_number }}
