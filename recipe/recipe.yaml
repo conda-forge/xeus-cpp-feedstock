@@ -1,6 +1,6 @@
 context:
   version: "0.10.0"
-  build_number: 2
+  build_number: 3
 
 package:
   name: xeus-cpp
@@ -9,6 +9,8 @@ package:
 source:
   url: https://github.com/compiler-research/xeus-cpp/archive/${{ version }}.tar.gz
   sha256: f84ae9fab0016b8995f60cc52ba68d287b224dfcf8b8c21a34b5200522799446
+  patches:
+    - patches/cppinterop-2.0-api.patch
 
 build:
   number: ${{ build_number }}
@@ -33,7 +35,7 @@ requirements:
     - cpp-argparse
     - nlohmann_json
     - nlohmann_json-abi
-    - cppinterop <2
+    - cppinterop >=2,<3
     - libcurl
   run:
     # Even though nlohmann_json is header-only,

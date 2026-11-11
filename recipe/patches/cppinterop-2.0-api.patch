@@ -1,0 +1,66 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -90,7 +90,7 @@
+ 
+ set(xeus_REQUIRED_VERSION 6.0.0)
+ set(xeus_zmq_REQUIRED_VERSION 4.0.0)
+-set(CppInterOp_REQUIRED_VERSION 1.9.0)
++set(CppInterOp_REQUIRED_VERSION 2.0.0)
+ set(xeus_lite_REQUIRED_VERSION 5.0.0)
+ 
+ if (NOT TARGET xeus AND NOT TARGET xeus-static)
+diff --git a/src/xinspect.cpp b/src/xinspect.cpp
+--- a/src/xinspect.cpp
++++ b/src/xinspect.cpp
+@@ -70,9 +70,11 @@
+         {
+             static unsigned long long var_count = 0;
+ 
+-            if (auto* type = Cpp::GetType(expression))
+-            {
+-                return Cpp::GetQualifiedName(type);
++            if (auto type = Cpp::GetType(expression))
++            {
++                if (auto klass = Cpp::GetScopeFromType(type))
++                    return Cpp::GetQualifiedName(klass);
++                return Cpp::GetTypeAsString(type);
+             }
+ 
+             std::string id = "__Xeus_GetType_" + std::to_string(var_count++);
+@@ -80,9 +82,11 @@
+ 
+             if (!Cpp::Declare(using_clause.c_str(), false))
+             {
+-                Cpp::TCppScope_t lookup = Cpp::GetNamed(id, nullptr);
+-                Cpp::TCppType_t lookup_ty = Cpp::GetTypeFromScope(lookup);
+-                return Cpp::GetQualifiedCompleteName(Cpp::GetCanonicalType(lookup_ty));
++                Cpp::DeclRef lookup = Cpp::GetNamed(id, nullptr);
++                Cpp::TypeRef canonical = Cpp::GetCanonicalType(Cpp::GetTypeFromScope(lookup));
++                if (auto klass = Cpp::GetScopeFromType(canonical))
++                    return Cpp::GetQualifiedCompleteName(klass);
++                return Cpp::GetTypeAsString(canonical);
+             }
+             return "";
+         }
+diff --git a/src/xinterpreter.cpp b/src/xinterpreter.cpp
+--- a/src/xinterpreter.cpp
++++ b/src/xinterpreter.cpp
+@@ -31,7 +31,7 @@
+ 
+ using Args = std::vector<const char*>;
+ 
+-void* createInterpreter(const Args &ExtraArgs = {}) {
++Cpp::InterpRef createInterpreter(const Args &ExtraArgs = {}) {
+   Args ClangArgs = {/*"-xc++"*/"-v"};
+   std::string resource_dir;
+   if (std::find_if(ExtraArgs.begin(), ExtraArgs.end(), [](const std::string& s) {
+@@ -56,7 +56,7 @@
+   ClangArgs.insert(ClangArgs.end(), ExtraArgs.begin(), ExtraArgs.end());
+   // FIXME: We should process the kernel input options and conditionally pass
+   // the gpu args here.
+-  Cpp::TInterp_t res = Cpp::CreateInterpreter(ClangArgs /*, {"-cuda"}*/);
++  Cpp::InterpRef res = Cpp::CreateInterpreter(ClangArgs /*, {"-cuda"}*/);
+   if (!res)
+   {
+       return res;
